@@ -1,0 +1,50 @@
+# New Messianic Version Bible — full site content (nmvbible.org)
+
+> Canonical home: https://nmvbible.org/ — Machine-readable feeds: /products.json, /donate.json — Summary: /llms.txt
+
+## HOME (/)
+
+**Headline:** Read the Bible and finally see Jesus in the Old Testament — and know exactly who is speaking on every page.
+
+**Proof points:** Millions of monthly readers on YouVersion · 66 books, every speaker identified · 12 five-star reader reviews shown (reader wall includes one 4-star review for balance).
+
+**The problem (agitation):** Almost every English Bible replaces God's name with LORD/GOD in small caps — titles where the Hebrew has a person. Readers can go cover to cover without encountering the name God gave Himself, or seeing how often the God who shows up, speaks, and is seen in the Old Testament is Jesus before Bethlehem.
+
+**Why the NMV reads differently:**
+1. The "names" aren't names — they're how you know WHO is speaking. Yehovah, Elohim, El Shaddai, Adonai are titles, descriptions, offices, and duties, each assigned to a specific member of the Godhead. Other Messianic Bibles put the Hebrew words back and stop there; the NMV translates them as identifications — the Father enthroned, the Son appearing and speaking, the Spirit moving — passage by passage.
+2. A Messianic lens: the New Testament writers found Jesus everywhere in the Old Testament; the NMV translates with that same expectation (the Angel of Yehovah, the visible God on the mountain, the "I AM" of Exodus). "Before Abraham was, I AM" (John 8:58) lands differently after reading Exodus 3:14 with the name intact.
+3. The Bible's unifying thread is the ancient Jewish wedding — bride price, betrothal, the bridegroom's departure and sudden return — kept visible from Genesis to Revelation.
+
+**Free chapter:** "The God Revealed in the Old Testament" (from Jesus: The God of Abraham, Isaac & Jacob, ~1,750 words) — free PDF: /assets/free-chapter-jesus-god-of-abraham-isaac-jacob.pdf. Join 148,000 subscribers on the NMV email list.
+
+**Editions (print via Amazon, digital via WooCommerce):** see /products.json for the full machine-readable list with prices and URLs.
+
+**Reader wall (verbatim Amazon reviews, 12):** Joe D. (5★), Audra Tucker (5★, Verified Purchase), Jon Cruz (5★, Verified Purchase), Wilderness1022 (5★, Verified Purchase), Rita Montgomery (5★, Verified Purchase), Spearhead (5★), Amazon Customer (5★), Lee Ann (5★, Verified Purchase), Debbie (5★), Guitargal (5★), Layla (5★), R. F. (4★ — "I like the translation very much. I just wish it had been proofread a little better.").
+
+**FAQ highlights:**
+- The one-volume editions and multi-volume sets all contain the complete NMV: Tanakh (Old Testament) and B'rit Chadashah (New Testament).
+- Digital editions are sold through the existing WooCommerce store on tovrose.com; only Amazon sells physical books.
+
+## BONUS (/bonus.html)
+
+For readers who bought the NMV on Amazon: free companion resources (bonus downloads) in exchange for an Amazon order confirmation — bridges NMV buyers into Tov Rose's book Jesus: The God of Abraham, Isaac & Jacob ($9.97 digital).
+
+**Endorsements for Jesus: The God of Abraham, Isaac & Jacob (verbatim, verified):**
+- Dr. Larry Ollison (Larry Ollison Ministries): "This book is a must-read for anyone seeking a deeper understanding of the continuity between the Old and New Testaments and the divinity of Jesus..." (full text on page)
+- Dr. Daniel C. Juster (Tikkun Global), Dr. Ron Cantor (Shelanu TV, two blurbs), Dr. Mike Spaulding (Calvary Chapel Lima), Dr. Jay Axtell, Joel Richardson, Dr. Kenneth K. Santarelli, Jeremy Caverley, Bonnie Saul Wilks (verified from her Aug 10, 2025 email).
+- Dr. Jeffrey Seif (UMJC) endorses Preparing the Body of Messiah to Make Itself Ready for the King.
+- Sid Roth (It's Supernatural!) endorses the New Messianic Version Bible.
+
+## DONATE (/donate.html)
+
+**Purpose:** Fund the NMV second edition — a full new translation built on the theology of Jesus: The God of Abraham, Isaac & Jacob. Deeper manuscript work; the wedding-framework research integrated into the text.
+
+**How:** "Bring the Word Home" end-of-year giving campaign via Zeffy: https://www.zeffy.com/en-US/donation-form/bring-the-word-home-end-of-year-giving-campaign
+
+**Pitch:** Bible translation has always been funded by the people who read the result. The NMV exists because readers believed English deserved a translation that reads God's so-called "names" for what they really are — titles, offices, and descriptions identifying which member of the Godhead is speaking and acting — and reads Jesus in the Old Testament the way the apostles did.
+
+## MACHINE-READABLE
+
+- /products.json — every offer: id, name, format, price, currency, URL
+- /donate.json — donation options: campaign, processor, URL
+- /robots.txt — crawler policy: AI retrieval agents allowed, training-only scrapers disallowed

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fund the NMV Translation — Donate</title>
+<meta name="description" content="Your gift funds the NMV Bible second edition: a full new translation built on the research behind Jesus: The God of Abraham, Isaac & Jacob.">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">New Messianic Version Bible</a>
+    <nav>
+      <a class="btn btn-ghost btn-sm" href="/#offer">Get the Bible</a>
+      <a class="btn btn-primary btn-sm" href="donate.html">Fund the Translation</a>
+    </nav>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Donate</p>
+    <h1>Fund the translation that puts God's names back.</h1>
+    <p class="lede">The published New Messianic Version Bible is in readers' hands today. The next work is a <strong>second edition</strong> — a full new translation built on the research behind <em>Jesus: The God of Abraham, Isaac &amp; Jacob</em>. Translation is slow, skilled labor. Your gift pays for it directly.</p>
+
+    <div class="donate-hero">
+      <h2>Where your gift goes</h2>
+      <p>Every donation to the NMV Bible Project funds the second-edition translation work: manuscript research, translation hours, and review. The published edition you can buy today exists because readers funded the first one — the second one works the same way.</p>
+      <div class="amounts">
+        <a class="amount" data-zeffy data-amount="25" href="donate.html">$25<small>Join the translation team</small></a>
+        <a class="amount" data-zeffy data-amount="50" href="donate.html">$50<small>Fund a day of research</small></a>
+        <a class="amount" data-zeffy data-amount="100" href="donate.html">$100<small>Fund a week of translation</small></a>
+        <a class="amount" data-zeffy data-amount="250" href="donate.html">$250<small>Translation partner</small></a>
+        <a class="amount" data-zeffy data-amount="500" href="donate.html">$500<small>Foundations circle</small></a>
+        <a class="amount" data-zeffy href="donate.html">Custom<small>Every gift matters</small></a>
+      </div>
+      <!-- NOTE (Tov): the per-amount impact lines above ("fund a day of research" etc.)
+           are illustrative — replace with ratios your finance side can defend, or remove them. -->
+      <div class="btn-row">
+        <a class="btn btn-primary" data-zeffy href="donate.html" data-track="donate-main" style="background:#fff;color:#5c3d0e">Fund the Translation</a>
+      </div>
+      <p class="micro" style="color:#e8dcc0" data-zeffy-note>Secure giving via Zeffy — set up in under a minute. Monthly giving available.</p>
+      <p class="micro" style="color:#e8dcc0" data-zeffy-missing hidden>Online giving link is being connected — thank you for your patience.</p>
+    </div>
+
+    <h2>Why give?</h2>
+    <p>Bible translation has always been funded by the people who read the result. The NMV exists because readers believed English deserved a translation that restores God's names and reads Jesus in the Tanakh the way the apostles did. The second edition — deeper manuscript work, the full wedding-framework research integrated into the text — needs the same kind of backing.</p>
+    <p>No gift is small. No pressure, ever — if the NMV has blessed you, this is one way to pass it on.</p>
+
+    <h2>Questions</h2>
+    <details class="faq" open>
+      <summary>What exactly does my donation fund?</summary>
+      <p>The NMV second-edition translation: manuscript research, translation and review hours. Not overhead, not marketing — the translation itself.</p>
+    </details>
+    <details class="faq">
+      <summary>Is my gift tax-deductible?</summary>
+      <p><em>Pending Tov's confirmation of the foundation's status wording.</em> We'll state the exact deductibility here once confirmed.</p>
+    </details>
+    <details class="faq">
+      <summary>Can I give monthly?</summary>
+      <p>Yes — monthly giving is available on the donation form and is the most helpful kind of gift for long translation work.</p>
+    </details>
+    <details class="faq">
+      <summary>I'd rather buy the Bible than donate. Can I do both?</summary>
+      <p>Absolutely — they're separate paths on purpose. <a href="/#offer">Get the Bible here</a>; every Amazon purchase through our links also supports the project.</p>
+    </details>
+
+    <p class="center" style="margin-top:30px"><a href="/">← Back to the NMV Bible</a></p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <p><strong>New Messianic Version Bible Project</strong> · Translation by Tov Rose<br>
+    <a href="/">Home</a> · <a href="bonus.html">Reader bonus</a> · <a href="https://tovrose.com">tovrose.com</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var url = NMV_CONFIG.ZEFFY_DONATE_URL;
+  if (url) {
+    document.querySelectorAll('[data-zeffy]').forEach(function(a){
+      var amt = a.getAttribute('data-amount');
+      a.href = amt ? url + (url.indexOf('?') > -1 ? '&' : '?') + 'amount=' + amt : url;
+    });
+  } else {
+    document.querySelectorAll('[data-zeffy]').forEach(function(a){
+      a.removeAttribute('href'); a.style.opacity = '.75'; a.style.cursor = 'default';
+    });
+    document.querySelectorAll('[data-zeffy-note]').forEach(function(n){ n.hidden = true; });
+    document.querySelectorAll('[data-zeffy-missing]').forEach(function(n){ n.hidden = false; });
+  }
+})();
+</script>
+</body>
+</html>

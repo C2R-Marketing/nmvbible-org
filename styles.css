@@ -1,0 +1,84 @@
+/* nmvbible.org — parchment theme, mobile-first. No frameworks. */
+:root{
+  --ink:#1a1a1a; --gold:#8a6d3b; --gold-dark:#5c3d0e;
+  --paper:#faf6ec; --paper-deep:#f3ecda; --line:#e2d6b8;
+  --muted:#6b6252; --cta:#7a5a17; --cta-hover:#5c3d0e;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Serif','Liberation Serif',Georgia,serif;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-text-size-adjust:100%}
+h1,h2,h3,.sans{font-family:'Liberation Sans','Noto Sans',-apple-system,'Segoe UI',sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+section.block{padding:56px 0;border-top:1px solid var(--line)}
+section.block:first-of-type{border-top:0}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+h1{font-size:clamp(28px,5.4vw,44px);line-height:1.2;margin:0 0 14px;color:var(--gold-dark)}
+h2{font-size:clamp(22px,4vw,30px);line-height:1.3;margin:0 0 12px;color:var(--gold-dark)}
+h3{font-size:19px;margin:26px 0 8px;color:var(--gold-dark)}
+p{margin:0 0 14px}
+.lede{font-size:18px}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(250,246,236,.97);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:'Liberation Sans','Noto Sans',sans-serif;font-weight:700;font-size:15px;color:var(--gold-dark);text-decoration:none}
+.topbar nav{display:flex;gap:8px}
+/* buttons */
+.btn{display:inline-block;font-family:'Liberation Sans','Noto Sans',sans-serif;font-weight:700;text-decoration:none;border-radius:8px;padding:13px 26px;font-size:16px;line-height:1.2;cursor:pointer;border:0;text-align:center}
+.btn-primary{background:var(--cta);color:#fff}
+.btn-primary:hover{background:var(--cta-hover)}
+.btn-ghost{background:transparent;color:var(--gold-dark);border:2px solid var(--gold)}
+.btn-ghost:hover{background:var(--paper-deep)}
+.btn-sm{padding:9px 16px;font-size:14px}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 8px}
+.micro{font-size:13px;color:var(--muted)}
+.center{text-align:center}
+/* hero */
+.hero{padding:64px 0 48px;background:linear-gradient(180deg,var(--paper-deep),var(--paper))}
+/* proof strip */
+.proof-strip{background:var(--gold-dark);color:#f5eeda;padding:26px 0}
+.proof-strip .wrap{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;text-align:center}
+.proof-item{font-family:'Liberation Sans','Noto Sans',sans-serif;font-size:14px;max-width:220px}
+.proof-item strong{display:block;font-size:22px;margin-bottom:4px}
+blockquote.pull{border-left:3px solid var(--gold);margin:22px 0;padding:4px 0 4px 18px;font-style:italic;font-size:18px}
+blockquote.pull footer{font-style:normal;font-size:14px;color:var(--muted);margin-top:8px}
+/* two-col lists */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+@media(max-width:620px){.cols{grid-template-columns:1fr}}
+.checklist{list-style:none;margin:0;padding:0}
+.checklist li{padding:8px 0 8px 30px;position:relative;font-size:15.5px}
+.checklist.yes li::before{content:"✓";position:absolute;left:4px;color:#2e7d32;font-weight:700}
+.checklist.no li::before{content:"✕";position:absolute;left:4px;color:#a33;font-weight:700}
+/* offer cards */
+.editions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:620px){.editions{grid-template-columns:1fr}}
+.ed-card{border:1.5px solid var(--line);border-radius:10px;padding:20px;background:#fffdf7;position:relative}
+.ed-card.flagship{border-color:var(--gold);box-shadow:0 4px 18px rgba(122,90,23,.12)}
+.flag{position:absolute;top:-13px;left:16px;background:var(--gold);color:#fff;font-family:'Liberation Sans','Noto Sans',sans-serif;font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:1px}
+.ed-card h3{margin-top:2px}
+.price-note{font-size:13px;color:var(--muted)}
+/* capture box */
+.capture{background:var(--paper-deep);border:1px solid var(--line);border-radius:10px;padding:26px;margin:26px 0}
+.capture form{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.capture input[type=email]{flex:1;min-width:220px;padding:13px 14px;font-size:16px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit}
+/* donate */
+.donate-hero{background:var(--gold-dark);color:#f5eeda;border-radius:12px;padding:34px 28px;margin:10px 0 24px}
+.donate-hero h2{color:#ffe9b8}
+.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+@media(max-width:520px){.amounts{grid-template-columns:1fr 1fr}}
+.amount{border:2px solid rgba(255,255,255,.35);border-radius:8px;padding:14px 8px;text-align:center;font-family:'Liberation Sans','Noto Sans',sans-serif;font-weight:700;font-size:18px;color:#fff;text-decoration:none;display:block}
+.amount small{display:block;font-weight:400;font-size:12px;opacity:.85;margin-top:4px}
+.amount:hover{border-color:#ffe9b8}
+/* faq */
+details.faq{border-bottom:1px solid var(--line);padding:14px 0}
+details.faq summary{font-family:'Liberation Sans','Noto Sans',sans-serif;font-weight:700;font-size:16px;cursor:pointer;color:var(--gold-dark)}
+details.faq p{margin:10px 0 4px;font-size:15.5px}
+/* footer */
+footer.site{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--muted);font-size:14px}
+footer.site a{color:var(--gold-dark)}
+/* exit intent */
+#exitModal{position:fixed;inset:0;background:rgba(26,26,26,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+#exitModal .box{background:var(--paper);border-radius:12px;max-width:480px;padding:32px;position:relative}
+#exitModal .close{position:absolute;top:10px;right:14px;font-size:22px;cursor:pointer;background:none;border:0;color:var(--muted)}
+.note{background:#fff8e6;border:1px solid var(--line);border-radius:8px;padding:12px 16px;font-size:14px;color:var(--muted);margin:16px 0}
+img{max-width:100%;height:auto}
+@media(max-width:520px){.btn-row .btn{flex:1 1 100%}}

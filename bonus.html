@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim Your Reader Bonus — NMV Bible</title>
+<meta name="description" content="Bought the NMV Bible on Amazon? Register your purchase and get the free companion chapter plus NMV updates.">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/">New Messianic Version Bible</a>
+    <nav>
+      <a class="btn btn-ghost btn-sm" href="/#offer">Get the Bible</a>
+      <a class="btn btn-primary btn-sm" href="donate.html">Fund the Translation</a>
+    </nav>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <p class="eyebrow">Reader bonus</p>
+    <h1>Bought the NMV on Amazon? Your bonus is waiting.</h1>
+    <p class="lede">Amazon doesn't share customer details with authors — so this page is how we thank you directly. Register your purchase and get the free companion chapter, <em>"The God Revealed in the Old Testament,"</em> plus NMV translation updates by email.</p>
+
+    <div class="capture">
+      <h3>Claim your bonus</h3>
+      <form data-capture data-tag="amazon-buyer-bonus">
+        <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
+        <button class="btn btn-primary" type="submit" data-track="capture-bonus">Send My Bonus Chapter</button>
+      </form>
+      <p class="micro" data-capture-note hidden>Thanks — email capture is being connected. Check back soon.</p>
+      <p class="micro">You'll receive the PDF chapter from <em>Jesus: The God of Abraham, Isaac &amp; Jacob</em> — the case for Jesus as the God of the Old Testament.</p>
+    </div>
+
+    <h2>Enjoyed the chapter? Get the whole case.</h2>
+    <p>The free chapter is one piece. The full book — <em>Jesus: The God of Abraham, Isaac &amp; Jacob</em> — lays out the complete argument: 385 prophecies fulfilled in Jesus, the Targum evidence, the Jewish wedding framework, and the controversy over the divine Name that led to a brand-new Bible translation.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" data-link="AMAZON.jesusBook" href="https://link.amazon/B0bTQAaHD" data-track="bonus-jesus-amazon">Get the Book on Amazon</a>
+      <a class="btn btn-ghost" data-link="WOO.jesusBook" href="https://tovrose.com/product/jesus-the-god-of-abraham-isaac-jacob/" data-track="bonus-jesus-ebook">Get the Digital — $9.97</a>
+    </div>
+
+    <p class="center" style="margin-top:34px"><a href="/">← Back to the NMV Bible</a></p>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <p><strong>New Messianic Version Bible Project</strong> · Translation by Tov Rose<br>
+    <a href="donate.html">Donate</a> · <a href="/">Home</a> · <a href="https://tovrose.com">tovrose.com</a></p>
+    <p class="micro">As an Amazon Associate, the project earns from qualifying purchases made through the Amazon links on this page — at no extra cost to you.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function get(path){return path.split('.').reduce(function(o,k){return (o||{})[k];}, NMV_CONFIG);}
+  document.querySelectorAll('[data-link]').forEach(function(a){
+    var v = get(a.getAttribute('data-link'));
+    if (typeof v === 'string' && v) a.href = v;
+  });
+  document.querySelectorAll('form[data-capture]').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = f.querySelector('input[type=email]').value;
+      if (NMV_CONFIG.CAPTURE_ENDPOINT) {
+        fetch(NMV_CONFIG.CAPTURE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({email: email, tag: f.getAttribute('data-tag')})}).catch(function(){});
+      }
+      var note = f.parentElement.querySelector('[data-capture-note]');
+      if (note) note.hidden = false;
+      f.querySelector('button[type=submit]').textContent = 'You\'re on the list ✓';
+    });
+  });
+})();
+</script>
+</body>
+</html>

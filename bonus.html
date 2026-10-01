@@ -38,6 +38,51 @@
 
     <h2>Enjoyed the chapter? Get the whole case.</h2>
     <p>The free chapter is one piece. The full book — <em>Jesus: The God of Abraham, Isaac &amp; Jacob</em> — lays out the complete argument: 385 prophecies fulfilled in Jesus, the Targum evidence, the Jewish wedding framework, and the controversy over the divine Name that led to a brand-new Bible translation.</p>
+
+    <h3>What leaders are saying about this book</h3>
+    <div class="wall">
+      <figure>
+        <blockquote>"'Jesus: The God of Abraham, Isaac, and Jacob' is one of the most comprehensive books defending the deity of Yeshua (Jesus) for Jews. I've never seen anything else like it."</blockquote>
+        <figcaption><strong>Dr. Daniel C. Juster</strong> — Tikkun Global; founder of the Messianic Jewish Biblical Institute</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"This book confronts objections to Jesus' deity and will leave skeptics with nowhere to hide."</blockquote>
+        <figcaption><strong>Joel Richardson</strong> — Host of "The Underground"; bestselling author</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"The most comprehensive and researched book I've ever read (and continue to read) that opens the understanding of relationship and role of Father and Son."</blockquote>
+        <figcaption><strong>Dr. Jay Axtell</strong> — Christ for the Nations Institute</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"Tov takes the reader on a journey through Jewish history and literature lenses that the New Testament is seen through. Quite readable, yet challenging to most Christian sensibilities. Highly recommend!"</blockquote>
+        <figcaption><strong>Dr. Jay Axtell</strong> — ★★★★★ Amazon review, Feb 5 2025 (Verified Purchase)</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"This book is a must-read for anyone seeking a deeper understanding of the continuity between the Old and New Testaments and the divinity of Jesus."</blockquote>
+        <figcaption><strong>Dr. Larry Ollison</strong> — Larry Ollison Ministries; President, ICFM</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"The book that you hold in your hands is a gift and treasure to the Body of Messiah. It is a bright light shining on a subject that has been disputed for centuries. 'Jesus, The God of Abraham, Isaac, and Jacob,' by Tov Rose, is a masterstroke of scholarship, Hebraic insight, and heartfelt commentary on the deity of Jesus."</blockquote>
+        <figcaption><strong>Bonnie Saul Wilks</strong> — Author, <em>Sabbath a Gift of Time</em></figcaption>
+      </figure>
+      <figure>
+        <blockquote>"Tov Rose has given the Body of Messiah a rare gift — a work that is both deeply Jewish in its hermeneutic and compellingly Messiah-centered."</blockquote>
+        <figcaption><strong>Dr. Ron Cantor</strong> — President of Shelanu TV, Tel Aviv</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"Tov Rose has written a resource so thorough that Bible students, ministry leaders, and every believer in Yeshua seeking to understand the unity of both the Hebrew and Apostolic Scriptures, will want a copy in their library."</blockquote>
+        <figcaption><strong>Dr. Mike Spaulding</strong> — Pastor, Calvary Chapel Lima, OH</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"It's the kind of book that leaves you wanting to slow down and linger with the Scriptures again."</blockquote>
+        <figcaption><strong>Dr. Kenneth Santarelli</strong> — Ed.D., M.Div.</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"The way to Yahweh can be found in Tov's well researched and respected text. A must read for all ages."</blockquote>
+        <figcaption><strong>Jeremy Caverley</strong> — Guest contributor, Christian Times Magazine</figcaption>
+      </figure>
+    </div>
+    <p class="micro">All of the above are endorsements of <em>Jesus: The God of Abraham, Isaac &amp; Jacob</em> — the book this free chapter comes from.</p>
     <div class="btn-row">
       <a class="btn btn-primary" data-link="AMAZON.jesusBook" href="https://link.amazon/B0bTQAaHD" data-track="bonus-jesus-amazon">Get the Book on Amazon</a>
       <a class="btn btn-ghost" data-link="WOO.jesusBook" href="https://tovrose.com/product/jesus-the-god-of-abraham-isaac-jacob/" data-track="bonus-jesus-ebook">Get the Digital — $9.97</a>
@@ -66,13 +111,16 @@
     f.addEventListener('submit', function(e){
       e.preventDefault();
       var email = f.querySelector('input[type=email]').value;
+      var note = f.parentElement.querySelector('[data-capture-note]');
       if (NMV_CONFIG.CAPTURE_ENDPOINT) {
         fetch(NMV_CONFIG.CAPTURE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({email: email, tag: f.getAttribute('data-tag')})}).catch(function(){});
+        if (note) { note.textContent = "Thanks — you're on the list. Your bonus chapter is on its way."; note.hidden = false; }
+      } else {
+        window.open(NMV_CONFIG.FREE_CHAPTER_PDF, '_blank');
+        if (note) { note.textContent = 'Your bonus chapter is downloading now. Email signup for NMV updates is being connected — check back soon.'; note.hidden = false; }
       }
-      var note = f.parentElement.querySelector('[data-capture-note]');
-      if (note) note.hidden = false;
-      f.querySelector('button[type=submit]').textContent = 'You\'re on the list ✓';
+      f.querySelector('button[type=submit]').textContent = 'Downloading your chapter ✓';
     });
   });
 })();

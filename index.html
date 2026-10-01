@@ -37,9 +37,9 @@
 <!-- 2. PROOF STRIP -->
 <div class="proof-strip">
   <div class="wrap">
-    <div class="proof-item"><strong>~148,000</strong>readers and subscribers</div>
-    <div class="proof-item"><strong>4.3★</strong>average across Tov Rose's 49 works on Goodreads</div>
-    <div class="proof-item"><strong>66</strong>books, every name of God restored</div>
+    <div class="proof-item"><strong>~148,000</strong>readers</div>
+    <div class="proof-item"><strong>Loved by readers</strong>on Amazon</div>
+    <div class="proof-item"><strong>66</strong>books, God's names restored</div>
   </div>
 </div>
 
@@ -49,6 +49,39 @@
       "I can see this translation being on the desk of every serious Biblical student. The New Messianic Version is a long overdue and much-needed translation of God's Word."
       <footer>— Sid Roth, <em>It's Supernatural!</em> (endorsement of the NMV Bible)</footer>
     </blockquote>
+
+    <h2>What NMV readers say on Amazon</h2>
+    <p class="lede">Verbatim excerpts from Amazon customer reviews.</p>
+    <div class="wall">
+      <figure>
+        <blockquote>"Tov Rose has put together a translation of the Bible with insights from the original Hebrew that make the scriptures come alive. I've read many translations but I really like this one."</blockquote>
+        <figcaption><strong>Spearhead</strong> — ★★★★★ Amazon review (Verified Purchase)</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"You don't have to be Jewish to use this translation! But it gives you a deeper understanding of the Jewish roots of the Bible… A great translation that will add to your study of the Bible!"</blockquote>
+        <figcaption><strong>Amazon Customer</strong> — ★★★★★ Amazon review</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"This new Messianic version Bible is quickly becoming my favorite!… I'm reading God's word with new eyes and it's simply incredible!"</blockquote>
+        <figcaption><strong>Lee Ann</strong> — ★★★★★ Amazon review (Verified Purchase)</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"I applaud Tov's dedication and courage to express and interpret the truth and my understanding of the precious jewel that is scripture is strengthened by his knowledge and understanding of our Jewish roots."</blockquote>
+        <figcaption><strong>Debbie</strong> — ★★★★★ Amazon review (Verified Purchase)</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"I particularly like this Bible because it has the translation of the meanings of names and places in parenthesis. It is an excellent study resource."</blockquote>
+        <figcaption><strong>Guitargal</strong> — ★★★★★ Amazon review</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"This is a great Bible if you want to read the Word in today's language. It has lots of extra info so you can understand what you are reading."</blockquote>
+        <figcaption><strong>Layla's pics and comments</strong> — ★★★★★ Amazon review (Verified Purchase)</figcaption>
+      </figure>
+      <figure>
+        <blockquote>"Great scholarship, clarifying work!"</blockquote>
+        <figcaption><strong>R. F.</strong> — ★★★★ Amazon review (Verified Purchase)</figcaption>
+      </figure>
+    </div>
 
     <!-- 3. FOR / NOT FOR -->
     <h2>Is the NMV for you?</h2>
@@ -127,7 +160,7 @@
     </div>
     <div class="capture">
       <h3>Prefer digital? Get the ebook direct — $17.99</h3>
-      <p>The complete NMV Bible as a PDF ebook, delivered instantly from Tov's own store. <strong>30-day guarantee:</strong> if it isn't for you, email us within 30 days for a full refund — no questions asked.</p>
+      <p>The complete NMV Bible as a PDF ebook, delivered instantly from Tov's own store.</p>
       <div class="btn-row">
         <a class="btn btn-primary" data-link="WOO.nmvEbook" href="https://tovrose.com/product/the-new-messianic-version-bible/" data-track="buy-ebook">Get the Ebook — $17.99</a>
       </div>
@@ -164,7 +197,7 @@
     </details>
     <details class="faq">
       <summary>What if I don't like it?</summary>
-      <p>Ebooks bought direct come with a 30-day guarantee — full refund, no questions asked. Print books follow Amazon's standard return policy.</p>
+      <p>For the direct ebook, reply to your delivery email with any issues and we'll take care of you. Print books follow Amazon's standard return policy.</p>
     </details>
     <details class="faq">
       <summary>Can my church or small group order in bulk?</summary>
@@ -221,18 +254,22 @@
   } else {
     document.querySelectorAll('[data-zeffy]').forEach(function(a){ a.href = NMV_CONFIG.ZEFFY_DONATE_URL; });
   }
-  // email capture
+  // email capture: subscribe when an endpoint is configured;
+  // until then, deliver the promised chapter immediately so the offer is real.
   document.querySelectorAll('form[data-capture]').forEach(function(f){
     f.addEventListener('submit', function(e){
       e.preventDefault();
       var email = f.querySelector('input[type=email]').value;
+      var note = f.parentElement.querySelector('[data-capture-note]');
       if (NMV_CONFIG.CAPTURE_ENDPOINT) {
         fetch(NMV_CONFIG.CAPTURE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({email: email, tag: f.getAttribute('data-tag')})}).catch(function(){});
+        if (note) { note.textContent = "Thanks — you're on the list. Your chapter is on its way."; note.hidden = false; }
+      } else {
+        window.open(NMV_CONFIG.FREE_CHAPTER_PDF, '_blank');
+        if (note) { note.textContent = 'Your chapter is downloading now. Email signup for NMV updates is being connected — check back soon.'; note.hidden = false; }
       }
-      var note = f.parentElement.querySelector('[data-capture-note]');
-      if (note) note.hidden = false;
-      f.querySelector('button[type=submit]').textContent = 'You\'re on the list ✓';
+      f.querySelector('button[type=submit]').textContent = 'Downloading your chapter ✓';
       track('capture', {tag: f.getAttribute('data-tag')});
     });
   });

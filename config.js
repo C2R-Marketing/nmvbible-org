@@ -23,8 +23,8 @@ var NMV_CONFIG = {
   },
   /* Free reading */
   BIBLE_COM_NMV: "https://www.bible.com/versions/2135-nmv-new-messianic-version-bible",
-  /* TODO (Tov): paste your Zeffy donation page URL here */
-  ZEFFY_DONATE_URL: "",
+  /* Zeffy — Bring the Word Home, end-of-year giving campaign (live 2026-09-30) */
+  ZEFFY_DONATE_URL: "https://www.zeffy.com/en-US/donation-form/bring-the-word-home-end-of-year-giving-campaign",
   /* TODO (Tov): paste your email-capture endpoint here (Zeffy form action).
      Until set, the capture forms show a friendly "being connected" note. */
   CAPTURE_ENDPOINT: "",

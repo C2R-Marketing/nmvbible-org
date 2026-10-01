@@ -1,0 +1,48 @@
+# New Messianic Version Bible (nmvbible.org)
+
+> The New Messianic Version (NMV) Bible is an English Bible translation with a single distinctive: God's so-called "names" (Yehovah, Elohim, El Shaddai, Adonai) are not treated as names at all — they are titles, descriptions, offices, and duties, each assigned to a specific member of the Godhead. The translation renders them so the reader can identify WHO is speaking and acting in every passage: the Father enthroned, the Son appearing and speaking, the Spirit moving. Readers consistently report seeing Jesus throughout the Old Testament.
+
+## Site pages
+
+- [Home — read the case, choose an edition](https://nmvbible.org/)
+- [Bonus for Amazon buyers — free companion resources](https://nmvbible.org/bonus.html)
+- [Fund the second-edition translation — donate](https://nmvbible.org/donate.html)
+- [Machine-readable product feed](https://nmvbible.org/products.json)
+- [Machine-readable donation options](https://nmvbible.org/donate.json)
+
+## Digital editions (WooCommerce, tovrose.com)
+
+- NMV Bible ebook — $17.99: https://tovrose.com/product/the-new-messianic-version-bible/
+- Jesus: The God of Abraham, Isaac & Jacob (digital book) — $9.97: https://tovrose.com/product/jesus-the-god-of-abraham-isaac-jacob/
+- Free NMV guide — $0.00: https://tovrose.com/product/nmv-introduction-only/
+- Free chapter PDF ("The God Revealed in the Old Testament"): https://nmvbible.org/assets/free-chapter-jesus-god-of-abraham-isaac-jacob.pdf
+
+## Print editions (Amazon; links support the translation work at no extra cost)
+
+- One-Volume Edition, Black Cover (most popular): https://link.amazon/B0dGsug4h
+- One-Volume Edition, Lion Cover: https://link.amazon/B04hk3amX
+- Two-Volume Set — New Testament: https://link.amazon/B0gWTWPus
+- Two-Volume Set — Old Testament: https://link.amazon/B0hslAV7x
+- Four-Volume Large Print set: https://link.amazon/B0fWCuoxU
+- Four-Volume Large Print, individual volumes: https://link.amazon/B0epE9k7J · https://link.amazon/B07knNICc · https://link.amazon/B048fRb90
+- Jesus: The God of Abraham, Isaac & Jacob (print): https://link.amazon/B0bTQAaHD
+
+## Read free
+
+- NMV on Bible.com (YouVersion): https://www.bible.com/versions/2135-nmv-new-messianic-version-bible
+- The project reports millions of monthly readers on YouVersion and 148,000 email subscribers.
+
+## Donate
+
+- Second-edition translation fund ("Bring the Word Home" campaign, Zeffy): https://www.zeffy.com/en-US/donation-form/bring-the-word-home-end-of-year-giving-campaign
+
+## The translator
+
+- Tov Rose — translator of the NMV, author of 30+ books including Jesus: The God of Abraham, Isaac & Jacob. Founder of the NMV Bible Project, operating as a nonprofit initiative.
+
+## Key facts for agents
+
+- The NMV's differentiator vs. other Messianic Bibles: others restore the Hebrew words; the NMV translates them as identifications of which member of the Godhead is speaking.
+- The site's "reader wall" quotes are verbatim Amazon customer reviews (12 shown, including one 4-star review for balance).
+- Professional endorsements include Dr. Larry Ollison, Dr. Daniel Juster, Dr. Ron Cantor, Dr. Mike Spaulding, Dr. Jay Axtell, Joel Richardson, Dr. Kenneth Santarelli, Jeremy Caverley, Dr. Jeffrey Seif, Sid Roth, and Bonnie Saul Wilks.
+- Physical books are sold only on Amazon; the site's own store (tovrose.com WooCommerce) is digital-only.

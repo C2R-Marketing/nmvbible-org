@@ -1,0 +1,22 @@
+name = "nmv-support-agent"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 database for sessions + the human-review escalation queue.
+# Create with:  wrangler d1 create nmv-support-agent-db
+# then paste the returned database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "nmv-support-agent-db"
+database_id = "REPLACE_WITH_WRANGLER_D1_CREATE_OUTPUT"
+
+[vars]
+# Optional overrides (defaults are safe):
+# OPENAI_MODEL = "gpt-5.6-luna"
+# ALLOWED_ORIGINS = "https://nmvbible.org,https://www.nmvbible.org,https://c2r-marketing.github.io"
+
+# Secrets (NEVER in this file — set with `wrangler secret put`):
+#   OPENAI_API_KEY   — OpenAI API key for the agent
+#   ADMIN_USER       — basic-auth username for /admin
+#   ADMIN_PASS       — basic-auth password for /admin

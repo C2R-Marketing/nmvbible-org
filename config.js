@@ -28,5 +28,8 @@ var NMV_CONFIG = {
   /* TODO (Tov): paste your email-capture endpoint here (Zeffy form action).
      Until set, the capture forms show a friendly "being connected" note. */
   CAPTURE_ENDPOINT: "",
-  FREE_CHAPTER_PDF: "assets/free-chapter-jesus-god-of-abraham-isaac-jacob.pdf"
+  FREE_CHAPTER_PDF: "assets/free-chapter-jesus-god-of-abraham-isaac-jacob.pdf",
+  /* On-site support agent (Cloudflare Worker). Leave blank until the Worker is
+     deployed and approved — the chat widget stays hidden while this is empty. */
+  SUPPORT_AGENT_URL: ""
 };

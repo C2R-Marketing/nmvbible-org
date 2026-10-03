@@ -3,17 +3,9 @@
  * in the admin view and follows up manually. (PR #470 owner lock.) */
 
 export async function initQueue(db) {
-  await db.exec(`CREATE TABLE IF NOT EXISTS escalations (
-    id TEXT PRIMARY KEY,
-    created_at TEXT NOT NULL,
-    session_id TEXT NOT NULL,
-    question TEXT NOT NULL,
-    email TEXT,
-    reason TEXT NOT NULL,
-    status TEXT NOT NULL DEFAULT 'open',
-    resolved_at TEXT,
-    resolved_note TEXT
-  )`);
+  // NOTE: D1 binding exec() rejects multi-line SQL ("incomplete input") —
+  // keep these statements on a single line.
+  await db.exec(`CREATE TABLE IF NOT EXISTS escalations (id TEXT PRIMARY KEY, created_at TEXT NOT NULL, session_id TEXT NOT NULL, question TEXT NOT NULL, email TEXT, reason TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'open', resolved_at TEXT, resolved_note TEXT)`);
   await db.exec(`CREATE INDEX IF NOT EXISTS idx_escalations_status ON escalations(status, created_at)`);
 }
 
@@ -34,8 +26,7 @@ export async function enqueueEscalation(db, { sessionId, question, email = null,
   const now = new Date().toISOString();
   const res = await db
     .prepare(
-      `INSERT OR IGNORE INTO escalations (id, created_at, session_id, question, email, reason, status)
-       VALUES (?, ?, ?, ?, ?, ?, 'open')`
+      `INSERT OR IGNORE INTO escalations (id, created_at, session_id, question, email, reason, status) VALUES (?, ?, ?, ?, ?, ?, 'open')`
     )
     .bind(id, now, sessionId, question, email, reason)
     .run();
@@ -59,4 +50,15 @@ export async function resolveEscalation(db, id, note = '') {
     .bind(now, note, id)
     .run();
   return { id, status: 'resolved' };
+}
+
+/**
+ * Retract a mistakenly-queued escalation by exact id. Used when the model
+ * queued an escalation but then answered the question itself anyway — the
+ * queue entry would otherwise be pure noise for the human reviewer.
+ * Only ever called with an id created by the current turn.
+ */
+export async function retractEscalation(db, id) {
+  await db.prepare(`DELETE FROM escalations WHERE id = ?`).bind(id).run();
+  return { id, retracted: true };
 }

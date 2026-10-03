@@ -5,10 +5,12 @@
  *   GET  /admin          — escalation review queue (basic auth; HUMAN review only)
  *   POST /admin/resolve  — mark a queue item resolved (basic auth)
  *
- * Env bindings: DB (D1). Secrets: OPENAI_API_KEY, ADMIN_USER, ADMIN_PASS.
- * Optional var: OPENAI_MODEL (default 'gpt-5.6-luna'), ALLOWED_ORIGINS (csv).
+ * Env bindings: DB (D1), AI (Workers AI). Secrets: CEREBRAS_API_KEY,
+ * GEMINI_API_KEY (fallback LLM providers), ADMIN_USER, ADMIN_PASS.
+ * Optional var: MODEL (default '@cf/meta/llama-3.1-8b-instruct-fp8'), ALLOWED_ORIGINS (csv).
  */
 import { runTurn } from './agent.js';
+import { modelConfigured } from './model.js';
 import { scrubPII, REFUSAL_TEXT } from './guardrails.js';
 import { initQueue, listEscalations, resolveEscalation } from './queue.js';
 import { kbMeta } from './kb.js';
@@ -17,9 +19,9 @@ const MAX_TURNS_PER_SESSION = 30;
 const MAX_MESSAGE_LEN = 500;
 
 async function initDb(db) {
-  await db.exec(`CREATE TABLE IF NOT EXISTS sessions (
-    id TEXT PRIMARY KEY, history TEXT NOT NULL DEFAULT '[]',
-    turns INTEGER NOT NULL DEFAULT 0, updated_at TEXT NOT NULL)`);
+  // NOTE: D1 binding exec() rejects multi-line SQL ("incomplete input") —
+  // keep these statements on a single line.
+  await db.exec(`CREATE TABLE IF NOT EXISTS sessions (id TEXT PRIMARY KEY, history TEXT NOT NULL DEFAULT '[]', turns INTEGER NOT NULL DEFAULT 0, updated_at TEXT NOT NULL)`);
   await initQueue(db);
 }
 
@@ -120,7 +122,7 @@ export default {
         const sessionId = String(body.session_id || '').slice(0, 64);
         const message = scrubPII(String(body.message || '')).slice(0, MAX_MESSAGE_LEN);
         if (!sessionId || !message.trim()) return json({ error: 'session_id and message required' }, 400, req, env);
-        if (!env.OPENAI_API_KEY) return json({ error: 'agent not configured' }, 503, req, env);
+        if (!modelConfigured(env)) return json({ error: 'agent not configured' }, 503, req, env);
 
         const row = await env.DB.prepare('SELECT history, turns FROM sessions WHERE id = ?').bind(sessionId).first();
         const turns = row ? row.turns : 0;
@@ -132,13 +134,12 @@ export default {
         }
         const history = row ? JSON.parse(row.history) : [];
         const { reply, type, history: newHistory } = await runTurn({
-          db: env.DB, sessionId, message, history,
+          db: env.DB, sessionId, message, history, env,
           waitUntil: ctx.waitUntil.bind(ctx),
         });
         const now = new Date().toISOString();
         await env.DB.prepare(
-          `INSERT INTO sessions (id, history, turns, updated_at) VALUES (?, ?, ?, ?)
-           ON CONFLICT(id) DO UPDATE SET history=excluded.history, turns=excluded.turns, updated_at=excluded.updated_at`
+          `INSERT INTO sessions (id, history, turns, updated_at) VALUES (?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET history=excluded.history, turns=excluded.turns, updated_at=excluded.updated_at`
         ).bind(sessionId, JSON.stringify(newHistory || []), turns + 1, now).run();
         return json({ reply, type }, 200, req, env);
       }

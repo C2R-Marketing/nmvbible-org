@@ -2,11 +2,26 @@
 
 /** Scope pre-filter: the agent only handles Bible / translation / edition /
  *  order / donation / NMV-project topics. The LLM input guardrail in agent.js
- *  does the authoritative classification; this is the cheap deterministic layer. */
-const SCOPE_RE = /bible|nmv|translation|translat|edition|volume|ebook|kindle|pdf|amazon|tovrose|donat|zeffy|gift|giving|tov rose|jesus|god|yehovah|elohim|el shaddai|adonai|messianic|tanakh|old testament|new testament|scripture|hebrew|greek|bonus|chapter|review|endors|church|order|ship|return|refund|price|cost|free|read|youversion|subscriber|email list|second edition|manuscript/i;
+ *  does the authoritative classification; this is the cheap deterministic layer.
+ *
+ *  NOTE: `translation`/`translated` are deliberately word-specific — a bare
+ *  `translat` prefix would also match "Translate this…" (a translation SERVICE
+ *  request, which is out of scope). Those service phrasings are caught by
+ *  OUT_OF_SCOPE_RE below, checked first. */
+const SCOPE_RE = /bible|nmv|translation|translated|edition|volume|ebook|kindle|pdf|amazon|tovrose|donat|zeffy|gift|giving|tov rose|jesus|god|yehovah|elohim|el shaddai|adonai|messianic|tanakh|old testament|new testament|scripture|hebrew|greek|bonus|chapter|review|endors|church|order|ship|return|refund|price|cost|free|read|youversion|subscriber|email list|second edition|manuscript/i;
 
 export function isInScope(text) {
   return SCOPE_RE.test(String(text || ''));
+}
+
+/** Deterministic out-of-scope overrides: service/topic requests that are never
+ *  NMV business, checked BEFORE the scope allowlist. Word-boundaried so
+ *  in-scope words ("translation") never collide with service requests
+ *  ("translate this…"). */
+const OUT_OF_SCOPE_RE = /\btranslate\b|cryptocurrency|\bcrypt\b|bitcoin|ethereum|\binvesting\b|\binvestment\b|file my taxes|tax filing|presidential election|who will win the|write (me )?a sermon|back pain|medical advice|quantum|chiefs game|tell me a joke|write me a poem/i;
+
+export function isOutOfScope(text) {
+  return OUT_OF_SCOPE_RE.test(String(text || ''));
 }
 
 /** Prompt-injection / jailbreak patterns in user input OR in tool-returned text. */
@@ -23,6 +38,8 @@ const INJECTION_PATTERNS = [
   /override\s+(your|the)\s+(safety|system|guardrail)/i,
   /\[system\]/i,
   /<\|?system\|?>/i,
+  /forget\s+(the\s+|your\s+|all\s+|my\s+)?(nmv|bible|instructions|everything|previous|prior)/i,
+  /you are now (a|an|not)\b/i,
 ];
 
 export function detectInjection(text) {
@@ -46,6 +63,11 @@ export const REFUSAL_TEXT =
 export const OUT_OF_SCOPE_TEXT =
   "I'm the NMV Bible assistant — I can help with questions about the translation, editions, ordering, the free chapter, and donations. " +
   "For anything outside that, the team can help directly if you leave your question and email.";
+
+/** Last-resort reply when every model provider fails mid-turn. The question is
+ *  always queued for human review alongside it — never dropped silently. */
+export const MODEL_ERROR_TEXT =
+  "I hit a glitch pulling up the NMV information just now — I've passed your question to the NMV team and they'll follow up personally.";
 
 /** Donation safety: the agent NEVER states amounts as commitments, NEVER takes
  *  payment, NEVER gives tax advice. It may only link the donation form. */

@@ -1,4 +1,5 @@
 name = "nmv-support-agent"
+account_id = "70d82e3d9583b87fc0de2cf70076f272"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
@@ -9,14 +10,19 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "nmv-support-agent-db"
-database_id = "REPLACE_WITH_WRANGLER_D1_CREATE_OUTPUT"
+database_id = "125ff2c8-bf47-46a8-9a82-827f6b105ee4"
+
+# Workers AI binding — the primary model transport (no external key).
+[ai]
+binding = "AI"
 
 [vars]
 # Optional overrides (defaults are safe):
-# OPENAI_MODEL = "gpt-5.6-luna"
+MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
 # ALLOWED_ORIGINS = "https://nmvbible.org,https://www.nmvbible.org,https://c2r-marketing.github.io"
 
-# Secrets (NEVER in this file — set with `wrangler secret put`):
-#   OPENAI_API_KEY   — OpenAI API key for the agent
+# Secrets (NEVER in this file — set via the Cloudflare API / wrangler secret put):
+#   CEREBRAS_API_KEY — fallback LLM provider (OpenAI-compatible)
+#   GEMINI_API_KEY   — fallback LLM provider (OpenAI-compatible)
 #   ADMIN_USER       — basic-auth username for /admin
 #   ADMIN_PASS       — basic-auth password for /admin
